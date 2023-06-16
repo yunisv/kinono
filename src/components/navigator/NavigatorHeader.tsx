@@ -7,6 +7,7 @@ import {changeNavigator} from "../../store/reducers/navigatorSlice";
 import {changeScreenSize} from "../../store/reducers/deviceInfoSlice";
 import myImage from "../../images/logo.png";
 import {fetchListData} from "../../store/Actions";
+import {listDataClear} from "../../store/reducers/listDataSlice";
 
 const NavigatorHeader = () => {
     const items: MenuProps['items'] = [
@@ -20,7 +21,7 @@ const NavigatorHeader = () => {
                     children: [
                         {
                             label: (
-                                <NavLink to={"/foreign-movie"}>
+                                <NavLink to={"/foreign-movie"} onClick={() => {dispatch(listDataClear())}}>
                                     Зарубежные
                                 </NavLink>
                             ),
@@ -28,7 +29,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/russian-movie"}>
+                                <NavLink to={"/russian-movie"} onClick={() => {dispatch(listDataClear())}}>
                                     Русские
                                 </NavLink>
                             ),
@@ -42,7 +43,7 @@ const NavigatorHeader = () => {
                     children: [
                         {
                             label: (
-                                <NavLink to={"/anime"}>
+                                <NavLink to={"/anime"} onClick={() => {dispatch(listDataClear())}}>
                                     Аниме
                                 </NavLink>
                             ),
@@ -50,7 +51,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/foreign-cartoon"}>
+                                <NavLink to={"/foreign-cartoon"} onClick={() => {dispatch(listDataClear())}}>
                                     Зарубежные
                                 </NavLink>
                             ),
@@ -58,7 +59,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/russian-cartoon"}>
+                                <NavLink to={"/russian-cartoon"} onClick={() => {dispatch(listDataClear())}}>
                                     Русские
                                 </NavLink>
                             ),
@@ -74,7 +75,7 @@ const NavigatorHeader = () => {
             children: [
                 {
                     label: (
-                        <NavLink to={"/anime-serial"}>
+                        <NavLink to={"/anime-serial"} onClick={() => {dispatch(listDataClear())}}>
                             Аниме
                         </NavLink>
                     ),
@@ -82,7 +83,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/cartoon-serial"}>
+                        <NavLink to={"/cartoon-serial"} onClick={() => {dispatch(listDataClear())}}>
                             Мультфильмы
                         </NavLink>
                     ),
@@ -90,7 +91,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/documentary-serial"}>
+                        <NavLink to={"/documentary-serial"} onClick={() => {dispatch(listDataClear())}}>
                             Документальные
                         </NavLink>
                     ),
@@ -98,7 +99,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/foreign-serial"}>
+                        <NavLink to={"/foreign-serial"} onClick={() => {dispatch(listDataClear())}}>
                             Зарубежные
                         </NavLink>
                     ),
@@ -106,7 +107,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/russian-serial"}>
+                        <NavLink to={"/russian-serial"} onClick={() => {dispatch(listDataClear())}}>
                             Русские
                         </NavLink>
                     ),
@@ -114,7 +115,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/multi-part-film"}>
+                        <NavLink to={"/multi-part-film"} onClick={() => {dispatch(listDataClear())}}>
                             Ассорти
                         </NavLink>
                     ),
@@ -129,25 +130,6 @@ const NavigatorHeader = () => {
     const navigatorSlice = useSelector((state: any)=> state.navigatorSlice)
     const {isMobile} = useSelector((state: any)=> state.deviceInfoSlice)
 
-    useEffect(() => {
-        const handleResize = () => {
-            const isMobileSize = window.matchMedia('(max-width: 768px)').matches;
-            // setIsMobile(isMobileSize);
-            dispatch(changeScreenSize(isMobileSize))
-        };
-
-        // Обработчик изменения размера экрана
-        window.addEventListener('resize', handleResize);
-
-        // Вызовем обработчик при первоначальной загрузке компонента
-        handleResize();
-
-        // Очистка обработчика при размонтировании компонента
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
         <>
             {
@@ -159,6 +141,7 @@ const NavigatorHeader = () => {
                                 height={50}
                                 style={{objectFit: "cover"}}
                                 onClick={() => {
+                                    dispatch(listDataClear())
                                     dispatch(changeNavigator("/"))
                                     // @ts-ignore
                                     dispatch(fetchListData())
@@ -185,6 +168,7 @@ const NavigatorHeader = () => {
                                     height={50}
                                     style={{objectFit: "cover"}}
                                     onClick={() => {
+                                        dispatch(listDataClear())
                                         dispatch(changeNavigator("/"))
                                         // @ts-ignore
                                         dispatch(fetchListData())
@@ -203,6 +187,7 @@ const NavigatorHeader = () => {
                                 onSelect={(e) => {
                                     console.log(e);
                                     // @ts-ignore
+                                    dispatch(listDataClear())
                                     dispatch(changeNavigator(e.key))
                                     navigate(e.key)
                                 }}

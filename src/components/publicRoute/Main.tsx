@@ -34,7 +34,7 @@ const Main = () => {
                     <NavigatorHeader />
                 </Header>
                 <Outlet />
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+                <Footer style={{ textAlign: 'center', backgroundColor: "#001529", color: "white"}}>Ant Design ©2023 Created by Ant UED</Footer>
             </Layout>
         </>
     );

@@ -1,0 +1,6 @@
+.my-menu .ant-menu-item-selected {
+    background-color: transparent;
+}
+.ant-menu-dark.ant-menu-horizontal >.ant-menu-item-selected {
+    background-color: transparent;
+}

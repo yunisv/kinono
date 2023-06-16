@@ -1,0 +1,7 @@
+body {
+  background: #001529;
+}
+
+.ant-menu-dark.ant-menu-horizontal >.ant-menu-submenu-selected{
+  background-color: transparent;
+}

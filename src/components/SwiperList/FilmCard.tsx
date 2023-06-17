@@ -22,6 +22,15 @@ import "./card.css"
 import {NavLink} from "react-router-dom";
 
 export default function FilmCard(props: any) {
+    let color;
+    if (props.filmData.material_data.imdb_rating > 6.5) {
+        color = "#00ff00"
+    } else if (props.filmData.material_data.imdb_rating < 3.5) {
+        color = "#ff0015"
+    } else {
+        color = "#fffb00"
+    }
+
     console.log(props.filmData)
 
     return (
@@ -32,7 +41,7 @@ export default function FilmCard(props: any) {
                     {/*<h3>Mountain</h3>*/}
                     <div className={"topCard"}>
                         <div className={"progressBar"}>
-                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => '8.5'} strokeColor={"#00ff00"} type="circle" percent={50} size="small" />
+                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.filmData.material_data.imdb_rating ? props.filmData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.filmData.material_data.imdb_rating * 10} size="small" />
                         </div>
                         <div className={"iconsButton"}>
                             <Tooltip placement="left" title="Любимое">
@@ -58,12 +67,13 @@ export default function FilmCard(props: any) {
                         </div>
                     </div>
                     <div className={"mainCard"}>
-                                    <span style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
-                                        overflow: "hidden"}}>Кошачий рай dvdvdvdvdvdvdv svsvvsvsssvsvsv svsvsvssvsvsv</span>
+                                    <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
+                                        overflow: "hidden"}} onClick={() => {
+                                        console.log(1212121)}}>{props.filmData.title}</NavLink>
                         <div>
-                            <NavLink to={""} >Аниме</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.all_genres[0]}</NavLink>
                             ,
-                            <NavLink to={""} >Мелодрамма</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.all_genres[1]}</NavLink>
                         </div>
                         <span>Эпизодов: 1</span>
                         <span>Длительность: {props.filmData.material_data.duration}мин</span>

@@ -24,27 +24,20 @@ import {NavLink} from "react-router-dom";
 // import images
 import cardImage from "../../images/card.png"
 
-export default function FilmCard(props: any) {
+export default function FilmCardWithoutData(props: any) {
     let color;
-    if (props.filmData.material_data.imdb_rating > 6.5) {
-        color = "#00ff00"
-    } else if (props.filmData.material_data.imdb_rating < 3.5) {
-        color = "#ff0015"
-    } else {
-        color = "#fffb00"
-    }
 
     // console.log(props.filmData)
 
     return (
         <div>
             <div className="card">
-                <img src={props.filmData.material_data.poster_url ? props.filmData.material_data.poster_url : cardImage} alt={"poster"}/>
+                <img src={cardImage} alt={"poster"}/>
                 <div className="info">
                     {/*<h3>Mountain</h3>*/}
                     <div className={"topCard"}>
                         <div className={"progressBar"}>
-                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.filmData.material_data.imdb_rating ? props.filmData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.filmData.material_data.imdb_rating * 10} size="small" />
+                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => "?"} strokeColor={color} type="circle" percent={0} size="small" />
                         </div>
                         <div className={"iconsButton"}>
                             <Tooltip placement="left" title="Любимое">
@@ -73,14 +66,7 @@ export default function FilmCard(props: any) {
                                     <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
                                         overflow: "hidden"}} onClick={() => {
                                         console.log(1212121)}}>{props.filmData.title}</NavLink>
-                        <div>
-                            <NavLink to={""} >{props.filmData.material_data.all_genres[0]}</NavLink>
-                            ,
-                            <NavLink to={""} >{props.filmData.material_data.all_genres[1]}</NavLink>
-                        </div>
                         <span>Эпизодов: 1</span>
-                        <span>Длительность: {props.filmData.material_data.duration}мин</span>
-                        <span>Статус: {props.filmData.material_data.all_status}</span>
                     </div>
                 </div>
             </div>

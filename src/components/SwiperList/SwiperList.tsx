@@ -26,6 +26,7 @@ import FilmCard from "./FilmCard";
 import {useSelector} from "react-redux";
 import SerialCard from "./SerialCard";
 import SerialCardWithoutData from "./SerialCardWithoutData";
+import FilmCardWithoutData from "./FilmCardWithoutData";
 
 export default function SwiperList() {
     const {listData, isLoading, error} = useSelector((state: any)=> state.listDataSlice)
@@ -74,11 +75,19 @@ export default function SwiperList() {
                     >
                         {listData.map((value: any, key: number) => {
                             if (["foreign-movie", 'anime', "soviet-cartoon", "foreign-cartoon", "russian-cartoon", "russian-movie"].includes(value.type)) {
-                                return (
-                                    <SwiperSlide key={key}>
-                                        <FilmCard filmData={value}/>
-                                    </SwiperSlide>
-                                )
+                                if (value.hasOwnProperty("material_data")) {
+                                    return (
+                                        <SwiperSlide key={key}>
+                                            <FilmCard filmData={value}/>
+                                        </SwiperSlide>
+                                    )
+                                } else {
+                                    return (
+                                        <SwiperSlide key={key}>
+                                            <FilmCardWithoutData filmData={value}/>
+                                        </SwiperSlide>
+                                    )
+                                }
                             } else {
                                 if (value.hasOwnProperty("material_data")) {
                                     return (

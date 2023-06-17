@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {Menu, Dropdown, Image, MenuProps} from 'antd';
+import {Menu, Dropdown, Image, MenuProps, Button} from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import {changeNavigator} from "../../store/reducers/navigatorSlice";
 import {changeScreenSize} from "../../store/reducers/deviceInfoSlice";
@@ -9,7 +9,12 @@ import myImage from "../../images/logo.png";
 import {fetchListData} from "../../store/Actions";
 import {listDataClear} from "../../store/reducers/listDataSlice";
 
-const NavigatorHeader = () => {
+const NavigatorHeader = (props: any) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const navigatorSlice = useSelector((state: any)=> state.navigatorSlice)
+    const {isMobile} = useSelector((state: any)=> state.deviceInfoSlice)
+
     const items: MenuProps['items'] = [
         {
             label: 'Фильмы',
@@ -21,7 +26,7 @@ const NavigatorHeader = () => {
                     children: [
                         {
                             label: (
-                                <NavLink to={"/foreign-movie"} onClick={() => {dispatch(listDataClear())}}>
+                                <NavLink to={"/foreign-movie"}>
                                     Зарубежные
                                 </NavLink>
                             ),
@@ -29,7 +34,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/russian-movie"} onClick={() => {dispatch(listDataClear())}}>
+                                <NavLink to={"/russian-movie"}>
                                     Русские
                                 </NavLink>
                             ),
@@ -43,7 +48,7 @@ const NavigatorHeader = () => {
                     children: [
                         {
                             label: (
-                                <NavLink to={"/anime"} onClick={() => {dispatch(listDataClear())}}>
+                                <NavLink to={"/anime"}>
                                     Аниме
                                 </NavLink>
                             ),
@@ -51,7 +56,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/foreign-cartoon"} onClick={() => {dispatch(listDataClear())}}>
+                                <NavLink to={"/foreign-cartoon"}>
                                     Зарубежные
                                 </NavLink>
                             ),
@@ -59,7 +64,7 @@ const NavigatorHeader = () => {
                         },
                         {
                             label: (
-                                <NavLink to={"/russian-cartoon"} onClick={() => {dispatch(listDataClear())}}>
+                                <NavLink to={"/russian-cartoon"}>
                                     Русские
                                 </NavLink>
                             ),
@@ -75,7 +80,7 @@ const NavigatorHeader = () => {
             children: [
                 {
                     label: (
-                        <NavLink to={"/anime-serial"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/anime-serial"}>
                             Аниме
                         </NavLink>
                     ),
@@ -83,7 +88,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/cartoon-serial"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/cartoon-serial"}>
                             Мультфильмы
                         </NavLink>
                     ),
@@ -91,7 +96,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/documentary-serial"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/documentary-serial"}>
                             Документальные
                         </NavLink>
                     ),
@@ -99,7 +104,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/foreign-serial"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/foreign-serial"}>
                             Зарубежные
                         </NavLink>
                     ),
@@ -107,7 +112,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/russian-serial"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/russian-serial"}>
                             Русские
                         </NavLink>
                     ),
@@ -115,7 +120,7 @@ const NavigatorHeader = () => {
                 },
                 {
                     label: (
-                        <NavLink to={"/multi-part-film"} onClick={() => {dispatch(listDataClear())}}>
+                        <NavLink to={"/multi-part-film"}>
                             Ассорти
                         </NavLink>
                     ),
@@ -124,11 +129,6 @@ const NavigatorHeader = () => {
             ],
         }
     ];
-
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const navigatorSlice = useSelector((state: any)=> state.navigatorSlice)
-    const {isMobile} = useSelector((state: any)=> state.deviceInfoSlice)
 
     return (
         <>
@@ -149,15 +149,9 @@ const NavigatorHeader = () => {
                                 src={myImage}
                             />
                         </NavLink>
-                        <Dropdown menu={{ items: items }}>
-                            <div>
-                                <a style={{display: "flex", alignItems: "center"}} onClick={(e) => {
-                                    e.preventDefault()
-                                }}>
-                                    <MenuOutlined style={{fontSize: 20}}/>
-                                </a>
-                            </div>
-                        </Dropdown>
+                        <Button type={"text"} onClick={() => {props.setCollapse(!props.collapsed)}}>
+                            <MenuOutlined style={{fontSize: 20, color: "rgb(248,202,0)"}}/>
+                        </Button>
                     </>
                     :
                     <>

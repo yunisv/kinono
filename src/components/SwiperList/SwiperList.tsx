@@ -24,6 +24,8 @@ import {Navigation, Pagination, Mousewheel} from "swiper";
 import {NavLink} from "react-router-dom";
 import FilmCard from "./FilmCard";
 import {useSelector} from "react-redux";
+import SerialCard from "./SerialCard";
+import SerialCardWithoutData from "./SerialCardWithoutData";
 
 export default function SwiperList() {
     const {listData, isLoading, error} = useSelector((state: any)=> state.listDataSlice)
@@ -32,10 +34,10 @@ export default function SwiperList() {
         <>
             {isLoading && <h1>LOADING</h1>}
             {error && <h1>error</h1>}
-            {listData &&
+            {listData.length !== 0 &&
                 <div className={"swiperBox"}>
-                    <Button style={isMobile ? {display: "none"} : {width: "5%", backgroundColor: "transparent", border: 0}}>
-                        <LeftOutlined className={"swiper-button-prev"}/>
+                    <Button type="text" className={"swiper-button-prev"} style={isMobile ? {display: "none"} : {width: "5%", display: "flex", justifyContent: "center"}}>
+                        <LeftOutlined className={"swiperButton"}/>
                     </Button>
                     <Swiper
                         style={isMobile ? {width: "100%"} : {width: "95%"}}
@@ -70,15 +72,34 @@ export default function SwiperList() {
                         }}
                         className="mySwiper"
                     >
-                        {listData.map((value: any, key: number) => (
-                            <SwiperSlide key={key}>
-                                <FilmCard filmData={value}/>
-                            </SwiperSlide>
-                        ))
+                        {listData.map((value: any, key: number) => {
+                            if (["foreign-movie", 'anime', "soviet-cartoon", "foreign-cartoon", "russian-cartoon", "russian-movie"].includes(value.type)) {
+                                return (
+                                    <SwiperSlide key={key}>
+                                        <FilmCard filmData={value}/>
+                                    </SwiperSlide>
+                                )
+                            } else {
+                                if (value.hasOwnProperty("material_data")) {
+                                    return (
+                                        <SwiperSlide key={key}>
+                                            <SerialCard serialData={value}/>
+                                        </SwiperSlide>
+                                    )
+                                } else {
+                                    return (
+                                        <SwiperSlide key={key}>
+                                            <SerialCardWithoutData serialData={value}/>
+                                        </SwiperSlide>
+                                    )
+                                }
+
+                            }
+                        })
                         }
                     </Swiper>
-                    <Button style={isMobile ? {display: "none"} : {width: "5%", backgroundColor: "transparent", border: 0}}>
-                        <RightOutlined className={"swiper-button-next"}/>
+                    <Button type="text" className={"swiper-button-next"} style={isMobile ? {display: "none"} : {width: "5%", display: "flex", justifyContent: "center"}}>
+                        <RightOutlined className={"swiperButton"}/>
                     </Button>
                 </div>
             }

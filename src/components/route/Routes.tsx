@@ -9,8 +9,9 @@ const RoutesComp = () => {
     return (
         <Routes>
             <Route path={routes.home} element={<Main/>}>
-                <Route path={routes.home} element={<div>asd</div>} />
-                <Route path={routes.anime} element={<Main2 />} />
+                <Route path={routes.home} element={<Main2 titlePage={""}/>} />
+                <Route path={routes.anime} element={<Main2 titlePage={"Аниме (фильмы)"}/>} />
+                <Route path={routes.anime_serial} element={<Main2 titlePage={"Аниме (сериалы)"}/>} />
             </Route>
 
 

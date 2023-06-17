@@ -76,7 +76,7 @@ export default function SerialCardWithoutData(props: any) {
                     display: "flex",
                     justifyContent: "center"
                 }}>
-                    <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.serialData.title}</span>
+                    <NavLink to={""} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.serialData.title}</NavLink>
                 </div>
                 <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 12, paddingLeft: 10, paddingTop: 2}}>{props.serialData.year}</span>
             </div>

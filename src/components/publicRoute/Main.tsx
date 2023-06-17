@@ -44,7 +44,7 @@ const Main = () => {
         {
             label: 'Аккаунт',
             key: 'Аккаунт',
-            icon: <UserOutlined />,
+            icon: <UserOutlined style={{color: "rgb(248,202,0)"}}/>,
             children: [
                 {
                     label: 'Любимое',
@@ -71,12 +71,12 @@ const Main = () => {
         {
             label: "Поиск",
             key: 'Поиск',
-            icon: <SearchOutlined />,
+            icon: <SearchOutlined style={{color: "rgb(248,202,0)"}}/>,
         },
         {
             label: 'Фильмы',
             key: 'Фильмы',
-            icon: <VideoCameraOutlined />,
+            icon: <VideoCameraOutlined style={{color: "rgb(248,202,0)"}}/>,
             children: [
                 {
                     type: 'group',
@@ -135,7 +135,7 @@ const Main = () => {
         {
             label: 'Сериалы',
             key: 'Сериалы',
-            icon: <VideoCameraFilled />,
+            icon: <VideoCameraFilled style={{color: "rgb(248,202,0)"}}/>,
             children: [
                 {
                     label: (
@@ -190,14 +190,14 @@ const Main = () => {
         {
             label: "Theme",
             key: 'Theme',
-            icon: <BulbOutlined />,
+            icon: <BulbOutlined style={{color: "rgb(248,202,0)"}}/>,
         }
     ];
     const itemsForDesktop: MenuProps['items'] = [
         {
             label: 'Аккаунт',
             key: 'Аккаунт',
-            icon: <UserOutlined />,
+            icon: <UserOutlined style={{color: "rgb(248,202,0)", fontSize: 20}}/>,
             children: [
                 {
                     label: 'Любимое',
@@ -224,12 +224,12 @@ const Main = () => {
         {
             label: "Поиск",
             key: 'Поиск',
-            icon: <SearchOutlined />,
+            icon: <SearchOutlined style={{color: "rgb(248,202,0)", fontSize: 20}}/>,
         },
         {
             label: "Theme",
             key: 'Theme',
-            icon: <BulbOutlined />,
+            icon: <BulbOutlined style={{color: "rgb(248,202,0)", fontSize: 20}}/>,
         }
     ];
 

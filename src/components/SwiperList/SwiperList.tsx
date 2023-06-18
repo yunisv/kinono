@@ -17,16 +17,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import "./swiperList.css";
-import "./card.css"
+import "../cards/card.css"
 
 // import required modules
 import {Navigation, Pagination, Mousewheel} from "swiper";
 import {NavLink} from "react-router-dom";
-import FilmCard from "./FilmCard";
+import FilmCard from "../cards/FilmCard";
 import {useSelector} from "react-redux";
-import SerialCard from "./SerialCard";
-import SerialCardWithoutData from "./SerialCardWithoutData";
-import FilmCardWithoutData from "./FilmCardWithoutData";
+import SerialCard from "../cards/SerialCard";
+import SerialCardWithoutData from "../cards/SerialCardWithoutData";
+import FilmCardWithoutData from "../cards/FilmCardWithoutData";
 
 export default function SwiperList() {
     const {listData, isLoading, error} = useSelector((state: any)=> state.listDataSlice)

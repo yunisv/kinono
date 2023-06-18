@@ -15,7 +15,7 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./swiperList.css";
+import "../SwiperList/swiperList.css";
 import "./card.css"
 
 // import required modules

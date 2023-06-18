@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {NavLink, Outlet} from "react-router-dom";
-import {Layout, Menu, MenuProps} from 'antd';
+import {Button, Divider, Input, Layout, List, Menu, MenuProps, Modal, Skeleton} from 'antd';
 import "./main.css"
 import NavigatorHeader from "../navigator/NavigatorHeader";
 import Sider from "antd/es/layout/Sider";
 import {
     BulbOutlined, CheckSquareOutlined, ContainerOutlined,
     DesktopOutlined, EyeOutlined,
-    FileOutlined, HeartOutlined,
+    FileOutlined, HeartOutlined, LoadingOutlined,
     PieChartOutlined, SearchOutlined,
     TeamOutlined,
     UserOutlined, VideoCameraFilled,
@@ -15,6 +15,9 @@ import {
 } from "@ant-design/icons";
 import {useDispatch, useSelector} from "react-redux";
 import {listDataClear} from "../../store/reducers/listDataSlice";
+import {changeSlicerNumber, modalSearchChange} from "../../store/reducers/searchSlice";
+import {fetchSearchData} from "../../store/Actions";
+import SearchCard from "../cards/SearchCard";
 
 const { Header, Footer } = Layout;
 
@@ -222,9 +225,9 @@ const Main = () => {
             ],
         },
         {
-            label: "Поиск",
+            label: <div onClick={() => {dispatch(modalSearchChange())}}>Поиск</div>,
             key: 'Поиск',
-            icon: <SearchOutlined style={{color: "rgb(248,202,0)", fontSize: 20}}/>,
+            icon: <SearchOutlined onClick={() => {dispatch(modalSearchChange())}} style={{color: "rgb(248,202,0)", fontSize: 20}}/>,
         },
         {
             label: "Theme",
@@ -235,7 +238,24 @@ const Main = () => {
 
     // @ts-ignore
     const {isMobile} = useSelector(state => state.deviceInfoSlice)
+    // @ts-ignore
+    const {modalOpen, isLoading, searchData, sliceNumber} = useSelector(state => state.searchSlice)
     const [collapsed, setCollapsed] = useState(true);
+    let timeoutId: string | number | NodeJS.Timeout | undefined;
+
+    const handleCancel = () => {
+        dispatch(modalSearchChange());
+    };
+
+    const handleSearch = (value: string) => {
+        // Отправляем запрос через 500 мс после последнего ввода
+        //@ts-ignore
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            //@ts-ignore
+            dispatch(fetchSearchData(value))
+        }, 500);
+    };
 
     return (
         <Layout>
@@ -253,6 +273,33 @@ const Main = () => {
                 <Header style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
                     <NavigatorHeader collapsed={collapsed} setCollapse={setCollapsed}/>
                 </Header>
+                <Modal className={"scrollableDiv"} bodyStyle={{height: 400, overflow: 'auto', backgroundColor: "#001529"}} maskClosable={true} closable={true} open={modalOpen} onCancel={handleCancel} footer={null}>
+                    <Input style={{backgroundColor: "rgb(248,202,0)"}} size="large" placeholder="large size" suffix={
+                        isLoading ?
+                            <LoadingOutlined />
+                            :
+                            <SearchOutlined onClick={(e) => {
+                                //@ts-ignore
+                                handleSearch(e.currentTarget.parentNode.parentNode.querySelector('input').value)}}/>
+                    }
+                           onChange={(e) => {handleSearch(e.target.value)}}/>
+                    <List
+                        dataSource={searchData.slice(0, sliceNumber)}
+                        renderItem={(item, index) => {
+                            return (
+                                <List.Item key={index}>
+                                    <SearchCard movieData={item}/>
+                                </List.Item>
+                            )
+                        }}
+                    />
+                    {
+                        sliceNumber !== 50 && searchData.length !== 0 &&
+                            <Button style={{backgroundColor: "rgb(248,202,0)", color: "white"}} onClick={() => {
+                                dispatch(changeSlicerNumber(sliceNumber + 10))
+                            }}>Load more</Button>
+                    }
+                </Modal>
                 <Outlet />
                 <Footer style={{ textAlign: 'center', backgroundColor: "#001529", color: "white"}}>Ant Design ©2023 Created by Ant UED</Footer>
             </Layout>

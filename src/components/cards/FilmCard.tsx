@@ -15,7 +15,7 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./swiperList.css";
+import "../SwiperList/swiperList.css";
 import "./card.css"
 
 // import required modules
@@ -24,27 +24,27 @@ import {NavLink} from "react-router-dom";
 // import images
 import cardImage from "../../images/card.png"
 
-export default function SerialCard(props: any) {
+export default function FilmCard(props: any) {
     let color;
-    if (props.serialData.material_data.imdb_rating > 6.5) {
+    if (props.filmData.material_data.imdb_rating > 6.5) {
         color = "#00ff00"
-    } else if (props.serialData.material_data.imdb_rating < 3.5) {
+    } else if (props.filmData.material_data.imdb_rating < 3.5) {
         color = "#ff0015"
     } else {
         color = "#fffb00"
     }
 
-    // console.log(props.serialData.material_data.imdb_rating)
+    // console.log(props.filmData)
 
     return (
         <div>
             <div className="card">
-                <img src={props.serialData.material_data.poster_url ? props.serialData.material_data.poster_url : cardImage} alt={"poster"}/>
+                <img src={props.filmData.material_data.poster_url ? props.filmData.material_data.poster_url : cardImage} alt={"poster"}/>
                 <div className="info">
                     {/*<h3>Mountain</h3>*/}
                     <div className={"topCard"}>
                         <div className={"progressBar"}>
-                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.serialData.material_data.imdb_rating ? props.serialData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.serialData.material_data.imdb_rating * 10} size="small" />
+                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.filmData.material_data.imdb_rating ? props.filmData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.filmData.material_data.imdb_rating * 10} size="small" />
                         </div>
                         <div className={"iconsButton"}>
                             <Tooltip placement="left" title="Любимое">
@@ -72,15 +72,15 @@ export default function SerialCard(props: any) {
                     <div className={"mainCard"}>
                                     <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
                                         overflow: "hidden"}} onClick={() => {
-                                        console.log(1212121)}}>{props.serialData.title}</NavLink>
+                                        console.log(1212121)}}>{props.filmData.title}</NavLink>
                         <div>
-                            <NavLink to={""} >{props.serialData.material_data.all_genres[0]}</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.all_genres[0]}</NavLink>
                             ,
-                            <NavLink to={""} >{props.serialData.material_data.all_genres[1]}</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.all_genres[1]}</NavLink>
                         </div>
-                        <span>Эпизодов: {props.serialData.material_data.episodes_total}</span>
-                        <span>Длительность: {props.serialData.material_data.duration}мин</span>
-                        <span>Статус: {props.serialData.material_data.all_status}</span>
+                        <span>Эпизодов: 1</span>
+                        <span>Длительность: {props.filmData.material_data.duration}мин</span>
+                        <span>Статус: {props.filmData.material_data.all_status}</span>
                     </div>
                 </div>
             </div>
@@ -92,9 +92,9 @@ export default function SerialCard(props: any) {
                     display: "flex",
                     justifyContent: "center"
                 }}>
-                    <NavLink to={""} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.serialData.title}</NavLink>
+                    <NavLink to={""} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.filmData.title}</NavLink>
                 </div>
-                <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 12, paddingLeft: 10, paddingTop: 2}}>{props.serialData.year}</span>
+                <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 12, paddingLeft: 10, paddingTop: 2}}>{props.filmData.year}</span>
             </div>
         </div>
     );

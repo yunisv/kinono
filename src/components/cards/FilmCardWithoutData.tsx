@@ -65,7 +65,8 @@ export default function FilmCardWithoutData(props: any) {
                     <div className={"mainCard"}>
                                     <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
                                         overflow: "hidden"}} onClick={() => {
-                                        console.log(1212121)}}>{props.filmData.title}</NavLink>
+                                        console.log(1212121)}}>{props.filmData.title}
+                                    </NavLink>
                         <span>Эпизодов: 1</span>
                     </div>
                 </div>

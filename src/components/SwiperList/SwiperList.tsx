@@ -55,8 +55,8 @@ export default function SwiperList() {
                         }}
                         breakpoints={{
                             "@0.00": {
-                                slidesPerView: 1,
-                                spaceBetween: 10,
+                                slidesPerView: 2,
+                                spaceBetween: 5,
                             },
                             "@0.75": {
                                 slidesPerView: 3,
@@ -104,8 +104,7 @@ export default function SwiperList() {
                                 }
 
                             }
-                        })
-                        }
+                        })}
                     </Swiper>
                     <Button type="text" className={"swiper-button-next"} style={isMobile ? {display: "none"} : {width: "5%", display: "flex", justifyContent: "center"}}>
                         <RightOutlined className={"swiperButton"}/>

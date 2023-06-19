@@ -10,6 +10,7 @@
     transition: 0.4s ease-out;
     box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
 }
+
 .card:hover {
     transform: translateY(0px);
 }
@@ -58,21 +59,6 @@
 }
 .card .info h1 {
     margin: 0px;
-}
-.card .info button {
-    padding: 0.6rem;
-    outline: none;
-    border: none;
-    border-radius: 3px;
-    background: white;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.4s ease;
-}
-.card .info button:hover {
-    background: dodgerblue;
-    color: white;
 }
 
 .ant-progress-text {
@@ -128,4 +114,46 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .card {
+        min-width: 120px;
+        max-height: 187px;
+        width: 120px;
+        height: 187px;
+        border-radius: 15px;
+        padding: 0.5rem;
+        background: white;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        transition: 0.4s ease-out;
+        box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .card .info .iconsButton {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .card .info .progressBar {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 5px;
+    }
+
+    .card .info .topCard {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+    }
+
+    .card .info .mainCard {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0px;
+    }
 }

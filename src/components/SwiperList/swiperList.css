@@ -1,6 +1,6 @@
 .swiper {
     width: 90%;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 .swiper-slide {
@@ -14,6 +14,21 @@
     align-items: center;
     width: 160px;
     min-height: 300px;
+}
+
+@media (max-width: 768px) {
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        /*background: rgba(255, 255, 255, 0.11);*/
+
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 160px;
+        min-height: 300px;
+    }
 }
 
 .swiperBox {

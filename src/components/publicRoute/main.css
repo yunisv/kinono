@@ -22,8 +22,8 @@
 }
 
 .ant-input {
-    background-color: rgb(248,202,0);
-    color: #001529;
+    background-color: #001529;
+    color: rgb(255,255,255, 0.65);
     font-weight: bold;
     font-style: italic;
 }

@@ -3,7 +3,7 @@ import './App.css';
 import RoutesComp from "./components/route/Routes";
 import {useLocation} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {fetchListData} from "./store/Actions";
+import {fetchListCoverData, fetchListData} from "./store/Actions";
 import {changeScreenSize} from "./store/reducers/deviceInfoSlice";
 import {listDataClear} from "./store/reducers/listDataSlice";
 
@@ -15,6 +15,8 @@ function App() {
         dispatch(listDataClear())
         // @ts-ignore
         dispatch(fetchListData(location.pathname.substring(1)))
+        // @ts-ignore
+        dispatch(fetchListCoverData(location.pathname.substring(1)))
         // получаем список
 
         // if (location.pathname === '/anime') {

@@ -74,9 +74,9 @@ export default function SerialCard(props: any) {
                                         overflow: "hidden"}} onClick={() => {
                                         console.log(1212121)}}>{props.serialData.title}</NavLink>
                         <div>
-                            <NavLink to={""} >{props.serialData.material_data.all_genres[0]}</NavLink>
+                            <NavLink to={""} >{props.serialData.material_data.hasOwnProperty("all_genres") ? props.serialData.material_data.all_genres[0] : null}</NavLink>
                             ,
-                            <NavLink to={""} >{props.serialData.material_data.all_genres[1]}</NavLink>
+                            <NavLink to={""} >{props.serialData.material_data.hasOwnProperty("all_genres") ? props.serialData.material_data.all_genres[1] : null}</NavLink>
                         </div>
                         <span>Эпизодов: {props.serialData.material_data.episodes_total}</span>
                         <span>Длительность: {props.serialData.material_data.duration}мин</span>

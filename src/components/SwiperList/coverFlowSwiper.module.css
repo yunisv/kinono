@@ -1,0 +1,22 @@
+.swiper {
+    width: 90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiperSlide {
+    width: 800px;
+    height: 400px;
+    background-color: rgba(50, 70, 90, 0.3);
+}
+
+.swiperSlideMobile {
+    width: 200px;
+    height: 50px;
+    background-color: rgba(50, 70, 90, 0.3);
+}
+
+.swiperSlideImg {
+    display: block;
+    width: 100%;
+}

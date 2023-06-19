@@ -23,8 +23,11 @@ import {NavLink} from "react-router-dom";
 
 // import images
 import cardImage from "../../images/card.png"
+import {useSelector} from "react-redux";
 
 export default function FilmCard(props: any) {
+    const {isMobile} = useSelector((state: any)=> state.deviceInfoSlice)
+
     let color;
     if (props.filmData.material_data.imdb_rating > 6.5) {
         color = "#00ff00"
@@ -44,7 +47,7 @@ export default function FilmCard(props: any) {
                     {/*<h3>Mountain</h3>*/}
                     <div className={"topCard"}>
                         <div className={"progressBar"}>
-                            <Progress trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.filmData.material_data.imdb_rating ? props.filmData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.filmData.material_data.imdb_rating * 10} size="small" />
+                            <Progress width={isMobile ? 40 : 56} trailColor={"rgba(255,255,255,0.5)"} style={{fontWeight: "700"}} format={() => props.filmData.material_data.imdb_rating ? props.filmData.material_data.imdb_rating : "?"} strokeColor={color} type="circle" percent={props.filmData.material_data.imdb_rating * 10} />
                         </div>
                         <div className={"iconsButton"}>
                             <Tooltip placement="left" title="Любимое">
@@ -70,17 +73,17 @@ export default function FilmCard(props: any) {
                         </div>
                     </div>
                     <div className={"mainCard"}>
-                                    <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
-                                        overflow: "hidden"}} onClick={() => {
-                                        console.log(1212121)}}>{props.filmData.title}</NavLink>
+                        { !isMobile && <NavLink to={""} style={{fontSize: 16, color: "white", width: "100%", textOverflow: "ellipsis", wordWrap: "break-word",whiteSpace: "nowrap",
+                            overflow: "hidden"}} onClick={() => {
+                            console.log(1212121)}}>{props.filmData.title}</NavLink>}
                         <div>
-                            <NavLink to={""} >{props.filmData.material_data.all_genres[0]}</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.hasOwnProperty("all_genres") ? props.filmData.material_data.all_genres[0] : null}</NavLink>
                             ,
-                            <NavLink to={""} >{props.filmData.material_data.all_genres[1]}</NavLink>
+                            <NavLink to={""} >{props.filmData.material_data.hasOwnProperty("all_genres") ? props.filmData.material_data.all_genres[1] : null}</NavLink>
                         </div>
-                        <span>Эпизодов: 1</span>
-                        <span>Длительность: {props.filmData.material_data.duration}мин</span>
-                        <span>Статус: {props.filmData.material_data.all_status}</span>
+                        <span style={{textAlign: "start"}}>Эпизодов: 1</span>
+                        <span style={{textAlign: "start"}}>Длительность: {props.filmData.material_data.duration}мин</span>
+                        <span style={{textAlign: "start"}}>Статус: {props.filmData.material_data.all_status}</span>
                     </div>
                 </div>
             </div>

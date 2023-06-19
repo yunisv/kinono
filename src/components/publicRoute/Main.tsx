@@ -72,9 +72,9 @@ const Main = () => {
             ],
         },
         {
-            label: "Поиск",
+            label: <div onClick={() => {dispatch(modalSearchChange())}}>Поиск</div>,
             key: 'Поиск',
-            icon: <SearchOutlined style={{color: "rgb(248,202,0)"}}/>,
+            icon: <SearchOutlined style={{color: "rgb(248,202,0)"}} onClick={() => {dispatch(modalSearchChange())}}/>,
         },
         {
             label: 'Фильмы',
@@ -274,15 +274,16 @@ const Main = () => {
                     <NavigatorHeader collapsed={collapsed} setCollapse={setCollapsed}/>
                 </Header>
                 <Modal className={"scrollableDiv"} bodyStyle={{height: 400, overflow: 'auto', backgroundColor: "#001529"}} maskClosable={true} closable={true} open={modalOpen} onCancel={handleCancel} footer={null}>
-                    <Input style={{backgroundColor: "rgb(248,202,0)"}} size="large" placeholder="large size" suffix={
+                    <Input style={{backgroundColor: "#001529", borderColor: "rgb(248,202,0)"}} size="large" placeholder="Type here ..." suffix={
                         isLoading ?
                             <LoadingOutlined />
                             :
-                            <SearchOutlined onClick={(e) => {
+                            <SearchOutlined style={{color: "rgb(248,202,0)"}} onClick={(e) => {
                                 //@ts-ignore
                                 handleSearch(e.currentTarget.parentNode.parentNode.querySelector('input').value)}}/>
                     }
                            onChange={(e) => {handleSearch(e.target.value)}}/>
+                    <Divider style={{backgroundColor: "rgba(255,255,255, 0.65)"}}/>
                     <List
                         dataSource={searchData.slice(0, sliceNumber)}
                         renderItem={(item, index) => {

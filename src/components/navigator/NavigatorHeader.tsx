@@ -17,7 +17,7 @@ const NavigatorHeader = (props: any) => {
 
     const items: MenuProps['items'] = [
         {
-            label: 'Фильмы',
+            label: <div style={{fontWeight: "bold"}}>Фильмы</div>,
             key: 'Фильмы',
             children: [
                 {
@@ -75,7 +75,7 @@ const NavigatorHeader = (props: any) => {
             ],
         },
         {
-            label: 'Сериалы',
+            label: <div style={{fontWeight: "bold"}}>Сериалы</div>,
             key: 'Сериалы',
             children: [
                 {
@@ -127,6 +127,10 @@ const NavigatorHeader = (props: any) => {
                     key: '/multi-part-film',
                 },
             ],
+        },
+        {
+            label: <NavLink to={"/"} style={{fontWeight: "bold"}}>Жанр</NavLink>,
+            key: 'Жанр',
         }
     ];
 
@@ -155,37 +159,39 @@ const NavigatorHeader = (props: any) => {
                     </>
                     :
                     <>
-                        <div style={{display: "flex", flexDirection: "row"}}>
-                            <NavLink to={"/"}>
-                                <Image
-                                    preview={false}
-                                    height={50}
-                                    style={{objectFit: "cover"}}
-                                    onClick={() => {
-                                        dispatch(listDataClear())
-                                        dispatch(changeNavigator("/"))
+                        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", width: "100%"}}>
+                            <div style={{display: "flex", flexDirection: "row", width: "70%"}}>
+                                <NavLink to={"/"} style={{width: "auto"}}>
+                                    <Image
+                                        preview={false}
+                                        height={50}
+                                        style={{objectFit: "cover"}}
+                                        onClick={() => {
+                                            dispatch(listDataClear())
+                                            dispatch(changeNavigator("/"))
+                                            // @ts-ignore
+                                            dispatch(fetchListData())
+                                        }}
+                                        src={myImage}
+                                    />
+                                </NavLink>
+                                <Menu
+                                    theme="dark"
+                                    mode="horizontal"
+                                    // defaultSelectedKeys={navigatorSlice}
+                                    selectable={true}
+                                    selectedKeys={navigatorSlice}
+                                    style={{ fontSize: 16 , width: "40%"}}
+                                    items={items}
+                                    onSelect={(e) => {
+                                        console.log(e);
                                         // @ts-ignore
-                                        dispatch(fetchListData())
+                                        dispatch(listDataClear())
+                                        dispatch(changeNavigator(e.key))
+                                        navigate(e.key)
                                     }}
-                                    src={myImage}
                                 />
-                            </NavLink>
-                            <Menu
-                                theme="dark"
-                                mode="horizontal"
-                                // defaultSelectedKeys={navigatorSlice}
-                                selectable={true}
-                                selectedKeys={navigatorSlice}
-                                style={{ fontSize: 16 }}
-                                items={items}
-                                onSelect={(e) => {
-                                    console.log(e);
-                                    // @ts-ignore
-                                    dispatch(listDataClear())
-                                    dispatch(changeNavigator(e.key))
-                                    navigate(e.key)
-                                }}
-                            />
+                            </div>
                         </div>
                     </>
             }

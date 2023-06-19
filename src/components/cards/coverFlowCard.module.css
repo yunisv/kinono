@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.cardSide {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.cardInfo {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.cardInfoBox {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 4;
+    padding: 20px;
+}
+
+.cardBackground img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Это позволяет картинке заполнить всю доступную область сохраняя пропорции */
+    object-position: center center; /* Выравнивание картинки по центру */
+    z-index: 1;
+    filter: blur(3px);
+}
+
+.cardBackground::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Здесь 0.5 означает 50% прозрачности черного цвета */
+    z-index: 2;
+}
+
+.cardTitle {
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: start;
+}
+
+.cardDescription {
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: start;
+    max-height: 150px;
+    overflow: auto;
+    text-overflow: ellipsis;
+    white-space: initial;
+    max-width: 100%;
+}
+
+.cardYearBox {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: start;
+    width: 100%;
+    margin: 2px;
+    align-items: center;
+}
+
+.cardYear {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: start;
+    width: 100%;
+    margin: 2px;
+}
+
+.cardGenres {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .cardBackground img {
+        filter: none;
+    }
+}

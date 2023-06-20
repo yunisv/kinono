@@ -1,0 +1,57 @@
+.listBox {
+    width: 100%;
+    height: 100%;
+    border: 1px rgba(255, 255, 255, 0.65) solid;
+    border-radius: 15px;
+    padding: 0!important;
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    width: 75px;
+    height: 105px;
+    border-radius: 15px 0 0 15px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    border: 1px rgba(0, 0, 0) solid;
+}
+
+.movieTitle {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.movieTitleBox {
+    width: 100%;
+    height: 36px;
+    overflow: hidden; /* Скрытие содержимого, выходящего за границы */
+    text-overflow: ellipsis; /* Добавление троеточия в конце текста */
+    word-wrap: break-word; /* Ломание слов при необходимости */
+    white-space: normal; /* Разрешение переноса слов */
+}
+
+.movieInfo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movieTime {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    padding-left: 10px;
+}
+
+.listBox:hover {
+    background-color: rgba(0, 41, 77, 0.75);
+}

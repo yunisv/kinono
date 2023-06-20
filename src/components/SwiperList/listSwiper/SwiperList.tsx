@@ -17,16 +17,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import "./swiperList.css";
-import "../cards/card.css"
+import "../../cards/card.css"
 
 // import required modules
 import {Navigation, Pagination, Mousewheel} from "swiper";
 import {NavLink} from "react-router-dom";
-import FilmCard from "../cards/FilmCard";
+import FilmCard from "../../cards/FilmCard";
 import {useSelector} from "react-redux";
-import SerialCard from "../cards/SerialCard";
-import SerialCardWithoutData from "../cards/SerialCardWithoutData";
-import FilmCardWithoutData from "../cards/FilmCardWithoutData";
+import SerialCard from "../../cards/SerialCard";
+import SerialCardWithoutData from "../../cards/SerialCardWithoutData";
+import FilmCardWithoutData from "../../cards/FilmCardWithoutData";
 
 export default function SwiperList() {
     const {listData, isLoading, error} = useSelector((state: any)=> state.listDataSlice)
@@ -73,7 +73,7 @@ export default function SwiperList() {
                         }}
                         className="mySwiper"
                     >
-                        {listData.map((value: any, key: number) => {
+                        {listData.slice(0, 30).map((value: any, key: number) => {
                             if (["foreign-movie", 'anime', "soviet-cartoon", "foreign-cartoon", "russian-cartoon", "russian-movie"].includes(value.type)) {
                                 if (value.hasOwnProperty("material_data")) {
                                     return (

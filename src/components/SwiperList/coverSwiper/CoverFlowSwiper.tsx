@@ -11,14 +11,14 @@ import styles from "./coverFlowSwiper.module.css";
 
 // import required modules
 import {EffectCoverflow, Navigation, Pagination} from "swiper";
-import FilmCard from "../cards/FilmCard";
-import FilmCardWithoutData from "../cards/FilmCardWithoutData";
-import SerialCard from "../cards/SerialCard";
-import SerialCardWithoutData from "../cards/SerialCardWithoutData";
-import CoverFlowCard from "../cards/CoverFlowCard";
+import FilmCard from "../../cards/FilmCard";
+import FilmCardWithoutData from "../../cards/FilmCardWithoutData";
+import SerialCard from "../../cards/SerialCard";
+import SerialCardWithoutData from "../../cards/SerialCardWithoutData";
+import CoverFlowCard from "../../cards/CoverFlowCard";
 import {useSelector} from "react-redux";
-import CoverFlowInfo from "../cards/CoverFlowInfo";
-import CoverFlowBackground from "../cards/CoverFlowBackground";
+import CoverFlowInfo from "../../cards/CoverFlowInfo";
+import CoverFlowBackground from "../../cards/CoverFlowBackground";
 import {LeftOutlined, RightOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 

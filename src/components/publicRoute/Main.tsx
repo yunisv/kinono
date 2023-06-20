@@ -294,12 +294,14 @@ const Main = () => {
                             )
                         }}
                     />
-                    {
-                        sliceNumber !== 50 && searchData.length !== 0 &&
-                            <Button style={{backgroundColor: "rgb(248,202,0)", color: "white"}} onClick={() => {
+                    <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                        {
+                            sliceNumber !== 50 && searchData.length !== 0 &&
+                            <Button type={"text"} style={{borderColor: "rgb(248,202,0)", color: "rgb(248,202,0)", fontSize: 16}} onClick={() => {
                                 dispatch(changeSlicerNumber(sliceNumber + 10))
                             }}>Load more</Button>
-                    }
+                        }
+                    </div>
                 </Modal>
                 <Outlet />
                 <Footer style={{ textAlign: 'center', backgroundColor: "#001529", color: "white"}}>Ant Design ©2023 Created by Ant UED</Footer>

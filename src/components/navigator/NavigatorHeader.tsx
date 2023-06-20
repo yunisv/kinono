@@ -143,7 +143,7 @@ const NavigatorHeader = (props: any) => {
                             <Image
                                 preview={false}
                                 height={50}
-                                style={{objectFit: "cover"}}
+                                style={{objectFit: "cover", maxWidth: 88}}
                                 onClick={() => {
                                     dispatch(listDataClear())
                                     dispatch(changeNavigator("/"))

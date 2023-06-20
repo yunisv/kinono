@@ -15,7 +15,7 @@ import {
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "../SwiperList/swiperList.css";
+import "../SwiperList/listSwiper/swiperList.css";
 import "./card.css"
 
 import styles from "./coverFlowCard.module.css"

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchListData} from "../Actions";
+import {fetchListData, fetchListDataContinue} from "../Actions";
 
 const initialState = {
     listData: [],
@@ -7,7 +7,8 @@ const initialState = {
     next_page: "",
     currentPage: "",
     isLoading: false,
-    error: false
+    error: false,
+    continueError: false
 };
 
 const listDataSlice = createSlice({
@@ -30,6 +31,9 @@ const listDataSlice = createSlice({
             state.prev_page = ""
             state.next_page = ""
         },
+        changeContinueErrorStatus(state: any) {
+            state.continueError = false
+        }
     },
     extraReducers: {
         [fetchListData.pending.type]: (state) => {
@@ -54,6 +58,7 @@ const listDataSlice = createSlice({
             // state.listData = action.payload.results;
             state.next_page = action.payload.next_page;
             state.prev_page = action.payload.prev_page;
+            console.log(7777777)
         },
         [fetchListData.rejected.type]: (state, action) => {
             state.isLoading = false;
@@ -61,9 +66,25 @@ const listDataSlice = createSlice({
             state.listData = [];
             state.next_page = "";
             state.prev_page = "";
+        },
+        [fetchListDataContinue.pending.type]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchListDataContinue.fulfilled.type]: (state, action) => {
+            state.continueError = false
+            state.isLoading = false;
+            // @ts-ignore
+            state.listData = [...state.listData, ...action.payload.results]
+            state.next_page = action.payload.next_page;
+            state.prev_page = action.payload.prev_page;
+            console.log(1919199191)
+        },
+        [fetchListDataContinue.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.continueError = true;
         }
     }
 });
 
-export const { listDataFetching, listDataFetchingSuccess, listDataFetchingError, listDataClear } = listDataSlice.actions;
+export const { listDataFetching, listDataFetchingSuccess, listDataFetchingError, listDataClear, changeContinueErrorStatus } = listDataSlice.actions;
 export default listDataSlice.reducer

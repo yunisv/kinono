@@ -2,10 +2,11 @@ import React from 'react';
 import {Breadcrumb, Button, Divider, Layout, theme} from 'antd';
 import SwiperList from "../SwiperList/listSwiper/SwiperList";
 import CoverFlowSwiper from "../SwiperList/coverSwiper/CoverFlowSwiper";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ContinueList from "../lists/ContinueList";
 import AllList from "../lists/AllList";
 import {changeSlicerNumber} from "../../store/reducers/searchSlice";
+import {fetchListDataContinue} from "../../store/Actions";
 const { Content } = Layout;
 
 interface mainPageProps {
@@ -16,6 +17,8 @@ const Main2: React.FC<mainPageProps> = (props: mainPageProps) => {
         token: { colorBgContainer },
     } = theme.useToken();
     const {isMobile} = useSelector((state: any)=> state.deviceInfoSlice)
+    const {next_page} = useSelector((state: any)=> state.listDataSlice)
+    const dispatch = useDispatch()
 
     return (
         <Layout >
@@ -34,7 +37,8 @@ const Main2: React.FC<mainPageProps> = (props: mainPageProps) => {
                 <AllList />
                 <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <Button type={"text"} style={{borderColor: "rgb(248,202,0)", color: "rgb(248,202,0)", fontSize: 16}} onClick={() => {
-                        // dispatch(changeSlicerNumber(sliceNumber + 10))
+                        // @ts-ignore
+                        dispatch(fetchListDataContinue(next_page))
                     }}>Load more</Button>
                 </div>
             </Content>

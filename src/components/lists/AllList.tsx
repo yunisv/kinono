@@ -23,7 +23,7 @@ const ListRow: React.FC = () => {
     return (
         <Layout>
             <div className={styles.list}>
-                {listData.slice(0, 50).map((value: any, key: number) => {
+                {listData.map((value: any, key: number) => {
                     if (["foreign-movie", 'anime', "soviet-cartoon", "foreign-cartoon", "russian-cartoon", "russian-movie"].includes(value.type)) {
                         if (value.hasOwnProperty("material_data")) {
                             return (

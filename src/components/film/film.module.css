@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.text_rating {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.zaqolovok {
+    font-size: 18px;
+    color: #FFFFFF;
+    padding-top: 30px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.mini_zaqolovok {
+    font-size: 16px;
+    color: #FFFFFF;
+    padding-top: 10px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}

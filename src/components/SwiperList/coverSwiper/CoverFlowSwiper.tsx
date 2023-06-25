@@ -53,10 +53,10 @@ export default function CoverFlowSwiper() {
                 modules={[EffectCoverflow, Pagination, Navigation]}
                 className={styles.swiper}
             >
-                {listData.map((value: any, key: number) => {
+                {listData.map((value: any, index: number) => {
                     if (value.hasOwnProperty("material_data")) {
                         return (
-                            <SwiperSlide className={isMobile ? styles.swiperSlideMobile : styles.swiperSlide} key={key}>
+                            <SwiperSlide className={isMobile ? styles.swiperSlideMobile : styles.swiperSlide} key={index}>
                                 <CoverFlowBackground movieData={value}/>
                                 <CoverFlowCard movieData={value}/>
                                 <CoverFlowInfo movieData={value}/>

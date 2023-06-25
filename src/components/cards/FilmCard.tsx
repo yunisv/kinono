@@ -95,7 +95,7 @@ export default function FilmCard(props: any) {
                     display: "flex",
                     justifyContent: "center"
                 }}>
-                    <NavLink to={""} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.filmData.title}</NavLink>
+                    <NavLink to={`${props.filmData.id}`} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingLeft: 10, paddingTop: 10, textAlign: "left"}}>{props.filmData.title}</NavLink>
                 </div>
                 <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 12, paddingLeft: 10, paddingTop: 2}}>{props.filmData.year}</span>
             </div>

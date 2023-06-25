@@ -1,6 +1,7 @@
 export const routes = {
     home: '/',
     anime: "/anime",
+    anime_id: "/anime/:id",
     anime_serial: "/anime-serial",
     welcome: '/main-page',
     group: '/group/:group_id/',

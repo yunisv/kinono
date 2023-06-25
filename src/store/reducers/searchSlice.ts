@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchSearchData} from "../Actions";
+import {fetchSearchData, fetchSearchDataId} from "../Actions";
 
 const initialState = {
     searchInput: "",
@@ -51,7 +51,21 @@ const searchSlice = createSlice({
             state.isLoading = false;
             state.error = true;
             state.searchData = [];
-        }
+        },
+        [fetchSearchDataId.pending.type]: (state) => {
+            state.isLoading = true;
+            state.searchData = [];
+        },
+        [fetchSearchDataId.fulfilled.type]: (state, action) => {
+            state.error = false
+            state.isLoading = false;
+            state.searchData = action.payload.results
+        },
+        [fetchSearchDataId.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.error = true;
+            state.searchData = [];
+        },
     }
 });
 

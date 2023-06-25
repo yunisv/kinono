@@ -3,9 +3,10 @@ import './App.css';
 import RoutesComp from "./components/route/Routes";
 import {useLocation} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {fetchListCoverData, fetchListData} from "./store/Actions";
+import {fetchListCoverData, fetchListData, fetchSearchDataId} from "./store/Actions";
 import {changeScreenSize} from "./store/reducers/deviceInfoSlice";
 import {listDataClear} from "./store/reducers/listDataSlice";
+import {log} from "util";
 
 function App() {
     const location = useLocation();
@@ -19,10 +20,14 @@ function App() {
         dispatch(fetchListCoverData(location.pathname.substring(1)))
         // получаем список
 
-        // if (location.pathname === '/anime') {
-        //     // Выполнение определенной функции
-        //     myFunction();
-        // }
+        const ganres: string[] = ['anime', 'anime-serial']
+        if (ganres.some(item => location.pathname.split("/")[1].includes(item))) {
+            if (location.pathname.split("/")[2]) {
+                //@ts-ignore
+                dispatch(fetchSearchDataId(location.pathname.split("/")[2]))
+                // console.log(location.pathname.split("/")[2])
+            }
+        }
     }, [location]);
 
     useEffect(() => {

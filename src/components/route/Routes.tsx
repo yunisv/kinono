@@ -4,6 +4,7 @@ import {routes} from "../../urls/urls"
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import Main from "../publicRoute/Main";
 import Main2 from "../main/main2";
+import Film from "../film/Film";
 
 const RoutesComp = () => {
     return (
@@ -11,6 +12,7 @@ const RoutesComp = () => {
             <Route path={routes.home} element={<Main/>}>
                 <Route path={routes.home} element={<Main2 titlePage={""}/>} />
                 <Route path={routes.anime} element={<Main2 titlePage={"Аниме (фильмы)"}/>} />
+                <Route path={routes.anime_id} element={<Film />} />
                 <Route path={routes.anime_serial} element={<Main2 titlePage={"Аниме (сериалы)"}/>} />
             </Route>
 

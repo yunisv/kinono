@@ -32,6 +32,16 @@ export const fetchSearchData = createAsyncThunk('api/searchData', async (searchI
     }
 });
 
+export const fetchSearchDataId = createAsyncThunk('api/searchDataId', async (id: string) => {
+    try {
+        const response = await axios.get(`https://kodikapi.com/search?token=${process.env.REACT_APP_KODIK_TOKEN}&id=${id}&with_material_data=true`)
+        console.log(response.data)
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error.message);
+    }
+});
+
 export const fetchListCoverData = createAsyncThunk('api/listCoverData', async (path: string) => {
     try {
         const response = path ? await axios.get(`https://kodikapi.com/list?token=${process.env.REACT_APP_KODIK_TOKEN}&with_material_data=true&types=${path}&imdb_rating=8-10`) : await axios.get(`https://kodikapi.com/list?token=${process.env.REACT_APP_KODIK_TOKEN}&with_material_data=true&imdb_rating=8-10`)

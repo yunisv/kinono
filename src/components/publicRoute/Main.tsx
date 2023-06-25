@@ -284,7 +284,7 @@ const Main = () => {
                     }
                            onChange={(e) => {handleSearch(e.target.value)}}/>
                     <Divider style={{backgroundColor: "rgba(255,255,255, 0.65)"}}/>
-                    <List
+                    {searchData.length !== 0 && <List
                         dataSource={searchData.slice(0, sliceNumber)}
                         renderItem={(item, index) => {
                             return (
@@ -293,7 +293,7 @@ const Main = () => {
                                 </List.Item>
                             )
                         }}
-                    />
+                    />}
                     <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                         {
                             sliceNumber !== 50 && searchData.length !== 0 &&

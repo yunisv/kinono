@@ -13,6 +13,7 @@ const RoutesComp = () => {
                 <Route path={routes.home} element={<Main2 titlePage={""}/>} />
                 <Route path={routes.anime} element={<Main2 titlePage={"Аниме (фильмы)"}/>} />
                 <Route path={routes.anime_id} element={<Film />} />
+                <Route path={routes.anime_serial_id} element={<Film />} />
                 <Route path={routes.anime_serial} element={<Main2 titlePage={"Аниме (сериалы)"}/>} />
             </Route>
 

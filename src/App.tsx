@@ -14,14 +14,17 @@ function App() {
 
     useEffect(() => {
         dispatch(listDataClear())
-        // @ts-ignore
-        dispatch(fetchListData(location.pathname.substring(1)))
-        // @ts-ignore
-        dispatch(fetchListCoverData(location.pathname.substring(1)))
-        // получаем список
+        const ganres: string[] = ["/", '/anime', '/anime-serial']
 
-        const ganres: string[] = ['anime', 'anime-serial']
-        if (ganres.some(item => location.pathname.split("/")[1].includes(item))) {
+        if (ganres.includes(location.pathname)) {
+            // @ts-ignore
+            dispatch(fetchListData(location.pathname.substring(1)))
+            // @ts-ignore
+            dispatch(fetchListCoverData(location.pathname.substring(1)))
+            // получаем список
+        }
+
+        if (ganres.some(item => location.pathname.split("/")[1].includes(item.substring(1)))) {
             if (location.pathname.split("/")[2]) {
                 //@ts-ignore
                 dispatch(fetchSearchDataId(location.pathname.split("/")[2]))

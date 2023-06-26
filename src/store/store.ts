@@ -4,6 +4,7 @@ import deviceInfoSlice from "./reducers/deviceInfoSlice"
 import listDataSlice from "./reducers/listDataSlice";
 import searchSlice from "./reducers/searchSlice";
 import listCoverDataSlice from "./reducers/listCoverDataSlice";
+import movieSlice from "./reducers/movieSlice";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         deviceInfoSlice: deviceInfoSlice,
         listDataSlice: listDataSlice,
         searchSlice: searchSlice,
-        listCoverDataSlice: listCoverDataSlice
+        listCoverDataSlice: listCoverDataSlice,
+        movieSlice: movieSlice
     },
 });
 

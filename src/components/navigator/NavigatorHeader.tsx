@@ -4,9 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Menu, Dropdown, Image, MenuProps, Button} from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import {changeNavigator} from "../../store/reducers/navigatorSlice";
-import {changeScreenSize} from "../../store/reducers/deviceInfoSlice";
 import myImage from "../../images/logo.png";
-import {fetchListData} from "../../store/Actions";
 import {listDataClear} from "../../store/reducers/listDataSlice";
 
 const NavigatorHeader = (props: any) => {
@@ -147,8 +145,6 @@ const NavigatorHeader = (props: any) => {
                                 onClick={() => {
                                     dispatch(listDataClear())
                                     dispatch(changeNavigator("/"))
-                                    // @ts-ignore
-                                    dispatch(fetchListData())
                                 }}
                                 src={myImage}
                             />
@@ -169,8 +165,6 @@ const NavigatorHeader = (props: any) => {
                                         onClick={() => {
                                             dispatch(listDataClear())
                                             dispatch(changeNavigator("/"))
-                                            // @ts-ignore
-                                            dispatch(fetchListData())
                                         }}
                                         src={myImage}
                                     />

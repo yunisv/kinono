@@ -34,7 +34,7 @@ export const fetchSearchData = createAsyncThunk('api/searchData', async (searchI
 
 export const fetchSearchDataId = createAsyncThunk('api/searchDataId', async (id: string) => {
     try {
-        const response = await axios.get(`https://kodikapi.com/search?token=${process.env.REACT_APP_KODIK_TOKEN}&id=${id}&with_material_data=true`)
+        const response = await axios.get(`https://kodikapi.com/search?token=${process.env.REACT_APP_KODIK_TOKEN}&id=${id}&with_material_data=true&with_episodes=true`)
         console.log(response.data)
         return response.data;
     } catch (error: any) {

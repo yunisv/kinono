@@ -11,8 +11,12 @@ import {NavLink} from "react-router-dom";
 
 // import images
 import cardImage from "../../images/card.png"
+import {modalSearchChange} from "../../store/reducers/searchSlice";
+import {useDispatch} from "react-redux";
 
 export default function SearchCard(props: any) {
+    const dispatch = useDispatch()
+
     return (
         <div className={styles.cardTitle}>
             <div className={styles.card}>
@@ -31,7 +35,7 @@ export default function SearchCard(props: any) {
                 justifyContent: "center"
             }}>
                 <div>
-                    <NavLink to={""} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingTop: 10, textAlign: "left"}}>{props.movieData.title}</NavLink>
+                    <NavLink to={`/${props.movieData.type}/${props.movieData.id}`} onClick={() => {dispatch(modalSearchChange())}} style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 16, paddingTop: 10, textAlign: "left"}}>{props.movieData.title}</NavLink>
                 </div>
                 <span style={{color: "rgba(255, 255, 255, 0.65)", fontSize: 12, paddingLeft: 10, paddingTop: 4, width: 60}}>{props.movieData.year}</span>
             </div>

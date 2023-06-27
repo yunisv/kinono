@@ -76,7 +76,7 @@ const DesktopHeaderFilmInfo = (props: any) => {
             {
                 movieData.length === 1 &&
                 <>
-                    <div style={{position: "relative", minHeight: 350, width: "100%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", overflow: "hidden"}}>
+                    <div style={{position: "relative", minHeight: 350, width: "100%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", overflow: "hidden", borderRadius: 30}}>
                         <div
                             style={{
                                 backgroundImage: `url(${
@@ -250,7 +250,7 @@ const DesktopHeaderFilmInfo = (props: any) => {
                         <text style={{color: "#fff", fontSize: 26, fontWeight: "bold"}}>WATCH</text>
                     </div>
                     <div style={isMobile ? {display: "flex", justifyContent: "center", marginTop: 30, flexWrap: "wrap",  width: "100%", minHeight: "300px"} : {display: "flex", justifyContent: "center", marginTop: 30, flexWrap: "wrap",  width: "100%", minHeight: "auto"}}>
-                        <div style={isMobile ? {width: "100%", display: "flex", justifyContent: "center"} : {width: "30%", height: "100%", display: "flex", justifyContent: "center"}}>
+                        <div style={isMobile ? {width: "100%", height: "100%", display: "flex", justifyContent: "center"} : {width: "30%", height: "100%", display: "flex", justifyContent: "center"}}>
                             <Cascader defaultValue={[seasonOptions[0].label, seasonOptions[0].children[0].label]} options={seasonOptions} onChange={(e) => {
                                 //@ts-ignore
                                 e && setEpisode(e[1])}} />
